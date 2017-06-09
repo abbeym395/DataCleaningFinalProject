@@ -119,7 +119,7 @@ newdata <- function(dt) {
     }
     newtable$testlabel <- NULL # Remove the testlabel column
     print(newtable)
-    write.table(newtable, newtable.txt, rowname = FALSE)
+    write.table(newtable, "newtable.txt", row.names = FALSE)
     newtable # Return newtable
 }
 
