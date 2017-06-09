@@ -122,4 +122,4 @@ newdata <- function(dt) {
     newtable # Return newtable
 }
 
-#newdata(main())
+newdata(main())

@@ -11,6 +11,10 @@ knitr::opts_chunk$set(echo=TRUE)
 
 ##CodeBook.md
 ###CodebookforGettingandCleaningDatafinalproject
+No transformations other than the application of the mean to remove duplicate
+rows and the changing of "test" to a test variable were performed on the data 
+itself.  Only column names were affected by other work.
+
 #####subject  
     subject number  
 #####test  
