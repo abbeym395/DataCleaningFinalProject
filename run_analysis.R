@@ -21,7 +21,7 @@ main <- function(){
         test <- cbind(test, X_test[[i]])
     }
     
-    ## Asssigns the colnames to the provided features data
+    ## Assigns the colnames to the provided features data
     colnames(test) <- c("subject", "testlabel", features[1:length(features)-1])
 
     ## Tidies up header names and remove extraneous numbers
@@ -46,7 +46,7 @@ main <- function(){
         train <- cbind(train, X_train[[i]])
     }
     
-    ## Asssigns the colnames to the provided features data
+    ## Assigns the colnames to the provided features data
     colnames(train) <- c("subject", "testlabel", features[1:length(features)-1])
     
     ## Tidies up header names and remove extraneous numbers
@@ -69,7 +69,7 @@ main <- function(){
     testlabelnames <- c("walking"=1, "walking_upstairs" = 2, "walking_downstairs" = 3,"sitting" = 4, "standing" = 5, "laying" = 6)
     combined$test <- names(testlabelnames)[match(combined$testlabel, testlabelnames)] 
     
-    ## Reorders columns and removes the numerical test label
+    ## Reorders columns
     combined <- combined[,c(1, 69, 2:68)]
 
     combined
@@ -89,15 +89,15 @@ newdata <- function(dt) {
     ## subject and test are identical
     values <- numeric()
     
-    ## Loops through all but the final row
-    for (i in 1:nrow(dt)-1){
+    ## Loops through all rows
+    for (i in 1:nrow(dt)){
         ## Checks whether the test columns in 2 rows are identical AND if
         ## the subject columns are ALSO identical
         if (identical(dt$test[i], dt$test[i+1]) && identical(dt$subject[i], dt$subject[i+1])){
             ## If that is the case, then add the current row number to the
             ## list of identical rows
             values <- append(values, i)   
-        } else if (length(values) != 0){
+        } else if (length(values) != 0 | i == nrow(dt)){
             ## If that is not the case, then still add the current row number to
             ## the list (meaning that this is the last identical row)
             values <- append(values, i)
@@ -122,4 +122,4 @@ newdata <- function(dt) {
     newtable # Return newtable
 }
 
-newdata(main())
+#newdata(main())
